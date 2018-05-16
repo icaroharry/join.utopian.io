@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = {
     entry: {
@@ -100,6 +101,8 @@ module.exports = {
                 collapseWhitespace: true
             }
         }),
-        new CopyWebpackPlugin([{from: 'src/img', to: 'img'}])
+        new CopyWebpackPlugin([{from: 'src/img', to: 'img'}]),
+        new CopyWebpackPlugin([{from: 'src/preloaded.css', to: 'preloaded.css'}]),
+        new LiveReloadPlugin({ appendScriptTag: true })
     ]
 };
