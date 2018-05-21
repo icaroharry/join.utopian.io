@@ -1,17 +1,20 @@
 import 'babel-polyfill';
+
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import 'gsap';
 import Cookies from 'js-cookie';
 import ModalVideo from 'modal-video';
 import 'modal-video/css/modal-video.min.css';
-import './smoothscroll'
-import './index.css';
-import './sliders';
-import './sliders.css';
-import './mobile.css';
 import 'hamburgers';
 import 'hamburgers/dist/hamburgers.min.css';
+
+import './../shared/main.css';
+import './../shared/mobile.css';
+import '../smoothscroll'
+import '../sliders';
+import '../sliders.css';
 
 const $ = require('jquery');
 const helpers = require('./helpers');
@@ -67,33 +70,33 @@ $(document).on('click', '.circle', function(e) {
   e.preventDefault();
 });
 
-// faq
+// faq - disabled until the new backend is ready
 
-$.ajax({
-  type: 'GET',
-  beforeSend: function(request) {
-    request.setRequestHeader("x-api-key", 'c5pEsMpYZY896r7USzhWdapIY7o1GEpj3QCEQZSN');
-    request.setRequestHeader("x-api-key-id", 'kvo2x1982b');
-    request.setRequestHeader("Content-Type", 'application/json');
-    request.setRequestHeader("Accept", 'application/json');
-  },
-  url: 'https://api.utopian.io/api/faq',
-  success: function(response) {
-    let faq = {};
-    for (let i = 0; i < response.results.length; i++) {
-      if (!faq.hasOwnProperty(response.results[i]['category'])) {
-        faq[response.results[i]['category']] = [];
-      }
+// $.ajax({
+//   type: 'GET',
+//   beforeSend: function(request) {
+//     request.setRequestHeader("x-api-key", 'c5pEsMpYZY896r7USzhWdapIY7o1GEpj3QCEQZSN');
+//     request.setRequestHeader("x-api-key-id", 'kvo2x1982b');
+//     request.setRequestHeader("Content-Type", 'application/json');
+//     request.setRequestHeader("Accept", 'application/json');
+//   },
+//   url: 'https://api.utopian.io/api/faq',
+//   success: function(response) {
+//     let faq = {};
+//     for (let i = 0; i < response.results.length; i++) {
+//       if (!faq.hasOwnProperty(response.results[i]['category'])) {
+//         faq[response.results[i]['category']] = [];
+//       }
 
-      faq[response.results[i]['category']].push(response.results[i]);
-    }
+//       faq[response.results[i]['category']].push(response.results[i]);
+//     }
 
-    helpers.renderFaq('general', 'General', faq);
-    helpers.renderFaq('earning_rewards', 'Earning Rewards', faq);
-    helpers.renderFaq('sharing_contributions', 'Sharing Contributions', faq);
-    helpers.renderFaq('managing_projects', 'Managing Projects', faq);
-  }
-});
+//     helpers.renderFaq('general', 'General', faq);
+//     helpers.renderFaq('earning_rewards', 'Earning Rewards', faq);
+//     helpers.renderFaq('sharing_contributions', 'Sharing Contributions', faq);
+//     helpers.renderFaq('managing_projects', 'Managing Projects', faq);
+//   }
+// });
 
 // remove cover
 $(() => {

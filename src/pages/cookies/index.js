@@ -1,14 +1,17 @@
 import 'babel-polyfill';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Cookies from 'js-cookie';
 import ModalVideo from 'modal-video';
 import 'modal-video/css/modal-video.min.css';
+
 import 'hamburgers';
 import 'hamburgers/dist/hamburgers.min.css';
-import './../smoothscroll'
-import './../index.css';
-import './../mobile.css';
+
+import './../shared/smoothscroll'
+import './../shared/main.css';
+import './../shared/mobile.css';
 import './index.css';
 import './mobile.css';
 
